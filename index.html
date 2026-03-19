@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>swf2js test interface</title>
+    <link rel="stylesheet" href="./src/styles.css" />
+  </head>
+  <body>
+    <div class="page">
+      <aside class="panel controls">
+        <h1>swf2js test interface</h1>
+        <p class="lead">
+          Load a local SWF file or a URL, tweak swf2js options, and control playback without writing code.
+        </p>
+
+        <form id="swf-form" class="stack">
+          <label class="field">
+            <span>SWF URL</span>
+            <input id="swf-url" type="url" placeholder="./demo.swf or https://example.com/movie.swf" />
+          </label>
+
+          <label class="field">
+            <span>Local SWF file</span>
+            <input id="swf-file" type="file" accept=".swf" />
+          </label>
+
+          <div class="grid two">
+            <label class="field">
+              <span>Width</span>
+              <input id="swf-width" type="number" min="1" value="800" />
+            </label>
+            <label class="field">
+              <span>Height</span>
+              <input id="swf-height" type="number" min="1" value="600" />
+            </label>
+          </div>
+
+          <div class="grid two">
+            <label class="field">
+              <span>Quality</span>
+              <select id="swf-quality">
+                <option value="low">low</option>
+                <option value="medium" selected>medium</option>
+                <option value="high">high</option>
+              </select>
+            </label>
+            <label class="field">
+              <span>Audio type</span>
+              <select id="swf-audio-type">
+                <option value="webaudio" selected>webaudio</option>
+                <option value="webmedia">webmedia</option>
+                <option value="html5">html5</option>
+                <option value="audio">audio</option>
+              </select>
+            </label>
+          </div>
+
+          <div class="grid two">
+            <label class="field checkbox">
+              <input id="swf-autostart" type="checkbox" checked />
+              <span>Auto start</span>
+            </label>
+            <label class="field checkbox">
+              <input id="swf-debug" type="checkbox" />
+              <span>Enable debug helpers</span>
+            </label>
+          </div>
+
+          <label class="field">
+            <span>Background color</span>
+            <input id="swf-bgcolor" type="text" value="#111827" placeholder="#000000 or black" />
+          </label>
+
+          <label class="field">
+            <span>FlashVars (JSON)</span>
+            <textarea id="swf-flashvars" rows="4" placeholder='{"level": 3, "mode": "test"}'></textarea>
+          </label>
+
+          <div class="actions">
+            <button type="submit" class="primary">Load SWF</button>
+            <button type="button" id="reset-button">Reset</button>
+          </div>
+        </form>
+
+        <section class="stack secondary-actions">
+          <h2>Player controls</h2>
+          <div class="actions wrap">
+            <button type="button" data-action="play">Play</button>
+            <button type="button" data-action="stop">Stop</button>
+            <button type="button" data-action="step">Step</button>
+            <button type="button" data-action="info">Show info</button>
+            <button type="button" data-action="debug">Show debug</button>
+          </div>
+        </section>
+
+        <section class="stack status-box">
+          <h2>Status</h2>
+          <p id="status-message">Choose a SWF source and press “Load SWF”.</p>
+        </section>
+      </aside>
+
+      <main class="panel viewer-panel">
+        <div class="viewer-header">
+          <h2>Preview</h2>
+          <p>swf2js renders inside the target container below.</p>
+        </div>
+        <div id="swf-target" class="viewer"></div>
+      </main>
+    </div>
+
+    <script src="./swf2js.js"></script>
+    <script type="module" src="./dist/main.js"></script>
+  </body>
+</html>
